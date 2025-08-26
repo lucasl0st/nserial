@@ -1,0 +1,66 @@
+package protocol
+
+var byteToISO = map[byte]uint{
+	// cannot test
+	0x00: 1,
+	0x01: 3,
+	0x02: 5,
+
+	// tested
+	0x03: 6,
+
+	// interpolated, should match
+	0x04: 8,
+	0x05: 10,
+	0x06: 12,
+	0x07: 16,
+	0x08: 20,
+	0x09: 25,
+	0x0a: 32,
+	0x0b: 40,
+	0x0c: 50,
+	0x0d: 64,
+	0x0e: 80,
+	0x0f: 100,
+	0x10: 125,
+	0x11: 160,
+	0x12: 200,
+	0x13: 250,
+	0x14: 320,
+
+	// tested
+	0x15: 400,
+	0x16: 500,
+	0x17: 640,
+	0x18: 800,
+	0x19: 1000,
+
+	// interpolated, should match
+	0x1a: 1250,
+	0x1b: 1600,
+	0x1c: 2000,
+	0x1d: 2500,
+	0x1e: 3200,
+	0x1f: 4000,
+	0x20: 5000,
+
+	// tested
+	0x21: 6400,
+
+	// cannot test
+	0x22: 8000,
+	0x23: 10000,
+	0x24: 12800,
+	0x25: 16000,
+	0x26: 20000,
+	0x27: 25600,
+}
+
+func GetISO(b byte) uint {
+	iso, ok := byteToISO[b]
+	if !ok {
+		return 0
+	}
+
+	return iso
+}
